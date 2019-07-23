@@ -26,9 +26,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         rubyConverter.delegate = self
-        textInput.addTarget(self, action: #selector(textDidChange(_:)), for: .editingChanged)
-        
         updateButtonText()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        textInput.becomeFirstResponder()
     }
     
     private func updateButtonText() {
@@ -44,6 +47,7 @@ class ViewController: UIViewController {
         alert.present(in: self, sender: sender) { [weak self] value in
             self?.conversionProvider = value
             self?.convertCurrentText()
+            self?.updateButtonText()
         }
     }
     
@@ -55,10 +59,11 @@ class ViewController: UIViewController {
         alert.present(in: self, sender: sender) { [weak self] value in
             self?.conversionOutput = value
             self?.convertCurrentText()
+            self?.updateButtonText()
         }
     }
     
-    @objc func textDidChange(_ textInput: UITextField) {
+    @IBAction func textDidChange(_ textInput: UITextField) {
         convertCurrentText()
     }
     
@@ -69,6 +74,13 @@ class ViewController: UIViewController {
             return
         }
         rubyConverter.convert(textInput.text ?? "", to: conversionOutput, using: conversionProvider)
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

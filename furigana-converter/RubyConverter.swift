@@ -69,14 +69,15 @@ class RubyConverter {
         guard let (text, output) = requestOptions else { return }
         request = RubyConversionRequestGoo(text: text, output: output)
         request?.convert { [weak self] result in
-            switch result {
-            case .failure(let error): self?.delegate?.converterDidFail(error: error)
-            case .success(let ruby):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    self?.delegate?.converterDidFail(error: error)
+                case .success(let ruby):
                     self?.delegate?.converterDidConvertText(text, ruby: ruby, output: output)
                 }
+                self?.delegate?.converterDidEnd()
             }
-            self?.delegate?.converterDidEnd()
         }
     }
 }

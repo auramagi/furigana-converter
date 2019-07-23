@@ -58,33 +58,37 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2M-et-yvk">
-                                <rect key="frame" x="32" y="190" width="350" height="0.0"/>
+                                <rect key="frame" x="39" y="174" width="343" height="0.0"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="漢字が混ざっている文章を入力" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EbW-ye-tvc">
-                                <rect key="frame" x="32" y="122" width="350" height="44"/>
+                                <rect key="frame" x="32" y="114" width="350" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="3jx-tP-8lU"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes" returnKeyType="done"/>
+                                <connections>
+                                    <action selector="textDidChange:" destination="BYZ-38-t0r" eventType="editingChanged" id="fCA-ei-Ndl"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="uHK-L7-rzX"/>
+                                </connections>
                             </textField>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Age-Tu-zw4">
-                                <rect key="frame" x="197" y="214" width="20" height="20"/>
+                                <rect key="frame" x="197" y="190" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="e2M-et-yvk" firstAttribute="top" secondItem="EbW-ye-tvc" secondAttribute="bottom" constant="24" id="8OZ-Mt-dvI"/>
-                            <constraint firstItem="EbW-ye-tvc" firstAttribute="top" secondItem="MHb-Gq-6ut" secondAttribute="bottom" constant="24" id="9fU-b7-gUG"/>
+                            <constraint firstItem="e2M-et-yvk" firstAttribute="top" secondItem="EbW-ye-tvc" secondAttribute="bottom" constant="16" id="8OZ-Mt-dvI"/>
+                            <constraint firstItem="EbW-ye-tvc" firstAttribute="top" secondItem="MHb-Gq-6ut" secondAttribute="bottom" constant="16" id="9fU-b7-gUG"/>
                             <constraint firstItem="Age-Tu-zw4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fh3-mX-nRp"/>
                             <constraint firstItem="MHb-Gq-6ut" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="24" id="Hpu-xU-Jih"/>
-                            <constraint firstItem="e2M-et-yvk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="RVQ-lb-i1w"/>
+                            <constraint firstItem="e2M-et-yvk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="39" id="RVQ-lb-i1w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MHb-Gq-6ut" secondAttribute="trailing" constant="24" id="XQy-kv-fZV"/>
-                            <constraint firstItem="Age-Tu-zw4" firstAttribute="top" secondItem="e2M-et-yvk" secondAttribute="bottom" constant="24" id="ZfM-AB-tLh"/>
+                            <constraint firstItem="Age-Tu-zw4" firstAttribute="top" secondItem="e2M-et-yvk" secondAttribute="bottom" constant="16" id="ZfM-AB-tLh"/>
                             <constraint firstItem="EbW-ye-tvc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="aVM-iO-Wph"/>
                             <constraint firstItem="MHb-Gq-6ut" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="ceQ-j2-hps"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="e2M-et-yvk" secondAttribute="trailing" constant="32" id="iys-am-bzy"/>

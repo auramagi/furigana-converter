@@ -28,7 +28,7 @@ struct AlertSelector<T> {
             alert.addAction(action)
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "キャンセル", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         
         alert.popoverPresentationController?.sourceView = sender
