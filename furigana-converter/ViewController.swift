@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func selectRubyProvider(_ sender: UIButton) {
-        let options = [RubyConversionProvider.goo, .yahoo].map {
+        let options = [RubyConversionProvider.goo, .yahoo, .coreFoundation].map {
             AlertSelectorOption(value: $0, text: $0.text)
         }
         let alert = AlertSelector(title: nil, message: nil, options: options)
@@ -119,6 +119,7 @@ extension RubyConversionProvider {
         switch self {
         case .goo: return "Goo"
         case .yahoo: return "Yahoo"
+        case .coreFoundation: return "iOS"
         }
     }
 }

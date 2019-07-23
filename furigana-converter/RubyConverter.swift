@@ -42,6 +42,7 @@ enum RubyConversionOutput {
 enum RubyConversionProvider {
     case goo
     case yahoo
+    case coreFoundation
 }
 
 class RubyConverter {
@@ -57,6 +58,7 @@ class RubyConverter {
         switch provider {
         case .goo: return RubyConversionRequestGoo.availableOutputs
         case .yahoo: return RubyConversionRequestYahoo.availableOutputs
+        case .coreFoundation: return RubyConversionRequestCoreFoundation.availableOutputs
         }
     }
     
@@ -89,6 +91,7 @@ class RubyConverter {
         switch provider {
         case .goo: request = RubyConversionRequestGoo(text: text, output: output)
         case .yahoo: request = RubyConversionRequestYahoo(text: text, output: output)
+        case .coreFoundation: request = RubyConversionRequestCoreFoundation(text: text, output: output)
         }
         request?.convert { [weak self] result in
             DispatchQueue.main.async {
