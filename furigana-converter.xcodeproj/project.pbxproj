@@ -1,0 +1,353 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A3DBDEB322E69E0B000033CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DBDEB222E69E0B000033CF /* AppDelegate.swift */; };
+		A3DBDEB522E69E0B000033CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DBDEB422E69E0B000033CF /* ViewController.swift */; };
+		A3DBDEB822E69E0B000033CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3DBDEB622E69E0B000033CF /* Main.storyboard */; };
+		A3DBDEBA22E69E0D000033CF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3DBDEB922E69E0D000033CF /* Assets.xcassets */; };
+		A3DBDEBD22E69E0D000033CF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3DBDEBB22E69E0D000033CF /* LaunchScreen.storyboard */; };
+		A3DBDEC522E6A32E000033CF /* RubyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DBDEC422E6A32E000033CF /* RubyConverter.swift */; };
+		A3DBDEC722E6A370000033CF /* RubyConversionRequestGoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DBDEC622E6A370000033CF /* RubyConversionRequestGoo.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A3DBDEAF22E69E0B000033CF /* furigana-converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "furigana-converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3DBDEB222E69E0B000033CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A3DBDEB422E69E0B000033CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A3DBDEB722E69E0B000033CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A3DBDEB922E69E0D000033CF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A3DBDEBC22E69E0D000033CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A3DBDEBE22E69E0D000033CF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3DBDEC422E6A32E000033CF /* RubyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubyConverter.swift; sourceTree = "<group>"; };
+		A3DBDEC622E6A370000033CF /* RubyConversionRequestGoo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubyConversionRequestGoo.swift; sourceTree = "<group>"; };
+		A3DBDEC822E6A3BA000033CF /* secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = secrets.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A3DBDEAC22E69E0B000033CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A3DBDEA622E69E0B000033CF = {
+			isa = PBXGroup;
+			children = (
+				A3DBDEB122E69E0B000033CF /* furigana-converter */,
+				A3DBDEB022E69E0B000033CF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A3DBDEB022E69E0B000033CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A3DBDEAF22E69E0B000033CF /* furigana-converter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A3DBDEB122E69E0B000033CF /* furigana-converter */ = {
+			isa = PBXGroup;
+			children = (
+				A3DBDEB222E69E0B000033CF /* AppDelegate.swift */,
+				A3DBDEB422E69E0B000033CF /* ViewController.swift */,
+				A3DBDEC422E6A32E000033CF /* RubyConverter.swift */,
+				A3DBDEC622E6A370000033CF /* RubyConversionRequestGoo.swift */,
+				A3DBDEC822E6A3BA000033CF /* secrets.xcconfig */,
+				A3DBDEB622E69E0B000033CF /* Main.storyboard */,
+				A3DBDEB922E69E0D000033CF /* Assets.xcassets */,
+				A3DBDEBB22E69E0D000033CF /* LaunchScreen.storyboard */,
+				A3DBDEBE22E69E0D000033CF /* Info.plist */,
+			);
+			path = "furigana-converter";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A3DBDEAE22E69E0B000033CF /* furigana-converter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A3DBDEC122E69E0D000033CF /* Build configuration list for PBXNativeTarget "furigana-converter" */;
+			buildPhases = (
+				A3DBDEAB22E69E0B000033CF /* Sources */,
+				A3DBDEAC22E69E0B000033CF /* Frameworks */,
+				A3DBDEAD22E69E0B000033CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "furigana-converter";
+			productName = "furigana-converter";
+			productReference = A3DBDEAF22E69E0B000033CF /* furigana-converter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A3DBDEA722E69E0B000033CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1020;
+				LastUpgradeCheck = 1020;
+				ORGANIZATIONNAME = "Mikhail Apurin";
+				TargetAttributes = {
+					A3DBDEAE22E69E0B000033CF = {
+						CreatedOnToolsVersion = 10.2.1;
+					};
+				};
+			};
+			buildConfigurationList = A3DBDEAA22E69E0B000033CF /* Build configuration list for PBXProject "furigana-converter" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A3DBDEA622E69E0B000033CF;
+			productRefGroup = A3DBDEB022E69E0B000033CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A3DBDEAE22E69E0B000033CF /* furigana-converter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A3DBDEAD22E69E0B000033CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3DBDEBD22E69E0D000033CF /* LaunchScreen.storyboard in Resources */,
+				A3DBDEBA22E69E0D000033CF /* Assets.xcassets in Resources */,
+				A3DBDEB822E69E0B000033CF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A3DBDEAB22E69E0B000033CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A3DBDEB522E69E0B000033CF /* ViewController.swift in Sources */,
+				A3DBDEC522E6A32E000033CF /* RubyConverter.swift in Sources */,
+				A3DBDEC722E6A370000033CF /* RubyConversionRequestGoo.swift in Sources */,
+				A3DBDEB322E69E0B000033CF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A3DBDEB622E69E0B000033CF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3DBDEB722E69E0B000033CF /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A3DBDEBB22E69E0D000033CF /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A3DBDEBC22E69E0D000033CF /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A3DBDEBF22E69E0D000033CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3DBDEC822E6A3BA000033CF /* secrets.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A3DBDEC022E69E0D000033CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A3DBDEC822E6A3BA000033CF /* secrets.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A3DBDEC222E69E0D000033CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FK4VRNJVL7;
+				INFOPLIST_FILE = "furigana-converter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.apurin.furigana-converter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A3DBDEC322E69E0D000033CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FK4VRNJVL7;
+				INFOPLIST_FILE = "furigana-converter/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "me.apurin.furigana-converter";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A3DBDEAA22E69E0B000033CF /* Build configuration list for PBXProject "furigana-converter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3DBDEBF22E69E0D000033CF /* Debug */,
+				A3DBDEC022E69E0D000033CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A3DBDEC122E69E0D000033CF /* Build configuration list for PBXNativeTarget "furigana-converter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A3DBDEC222E69E0D000033CF /* Debug */,
+				A3DBDEC322E69E0D000033CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A3DBDEA722E69E0B000033CF /* Project object */;
+}
