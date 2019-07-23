@@ -40,19 +40,23 @@ class ViewController: UIViewController {
     }
     
     @IBAction func selectRubyProvider(_ sender: UIButton) {
-        let options = [RubyConversionProvider.goo].map {
+        let options = [RubyConversionProvider.goo, .yahoo].map {
             AlertSelectorOption(value: $0, text: $0.text)
         }
         let alert = AlertSelector(title: nil, message: nil, options: options)
         alert.present(in: self, sender: sender) { [weak self] value in
             self?.conversionProvider = value
+            let availableOutputs = RubyConverter.availableOutputs(provider: value)
+            if let selectedOutput = self?.conversionOutput, !availableOutputs.contains(selectedOutput) {
+                self?.conversionOutput = availableOutputs.first!
+            }
             self?.convertCurrentText()
             self?.updateButtonText()
         }
     }
     
     @IBAction func selectRubyOutput(_ sender: UIButton) {
-        let options = [RubyConversionOutput.hiragana, .katakana].map {
+        let options = RubyConverter.availableOutputs(provider: conversionProvider).map {
             AlertSelectorOption(value: $0, text: $0.text)
         }
         let alert = AlertSelector(title: nil, message: nil, options: options)
@@ -93,6 +97,7 @@ extension ViewController: RubyConverterDelegate {
         let errorText: String
         switch error {
         case .some(.providerNotAvaliable): errorText = "変換オプションの\(conversionProvider.text)が設定されていないため、現在は使えません。"
+        case .some(.outputNotAvailable): errorText = "変換オプションの\(conversionProvider.text)は\(conversionOutput.text)変換に非対応です。"
         default: errorText = "変換中、エラーが発生しました。"
         }
         rubyOutput.text = errorText
@@ -113,6 +118,7 @@ extension RubyConversionProvider {
     var text: String {
         switch self {
         case .goo: return "Goo"
+        case .yahoo: return "Yahoo"
         }
     }
 }
@@ -122,6 +128,7 @@ extension RubyConversionOutput {
         switch self {
         case .hiragana: return "ひらがな"
         case .katakana: return "カタカナ"
+        case .romaji: return "ローマ字"
         }
     }
 }

@@ -43,5 +43,7 @@
 	</array>
 	<key>GOO_APP_ID</key>
 	<string>$(GOO_APP_ID)</string>
+	<key>YAHOO_APP_ID</key>
+	<string>$(YAHOO_APP_ID)</string>
 </dict>
 </plist>

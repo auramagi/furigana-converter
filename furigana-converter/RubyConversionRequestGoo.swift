@@ -14,6 +14,8 @@ struct RubyConversionRequestGoo: RubyConversionRequest {
     
     var task: URLSessionDataTask?
     
+    static var availableOutputs: [RubyConversionOutput] { return [.hiragana, .katakana] }
+    
     init(text: String, output: RubyConversionOutput) {
         self.text = text
         self.output = output
@@ -26,7 +28,7 @@ struct RubyConversionRequestGoo: RubyConversionRequest {
         }
         let requestContent = Request(app_id: appID,
                               sentence: text,
-                              output_type: .fromOutput(output))
+                              output_type: output == .katakana ? .katakana : .hiragana)
         guard let json = try? JSONEncoder().encode(requestContent) else {
             completion(.failure(.providerError))
             return
@@ -65,13 +67,6 @@ extension RubyConversionRequestGoo {
     private enum OutputType: String, Codable {
         case hiragana = "hiragana"
         case katakana = "katakana"
-        
-        static func fromOutput(_ output: RubyConversionOutput) -> OutputType {
-            switch output {
-            case .hiragana: return .hiragana
-            case .katakana: return .katakana
-            }
-        }
     }
     
     private struct Request: Encodable {

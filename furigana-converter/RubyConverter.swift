@@ -20,10 +20,15 @@ enum RubyConversionError: Error {
     case providerNotAvaliable
     /// ネットワークエラーやAPIリクエストエラー他
     case providerError
+    /// セレクトした出力は非対応
+    case outputNotAvailable
 }
 
 protocol RubyConversionRequest {
+    static var availableOutputs: [RubyConversionOutput] { get }
+    
     init(text: String, output: RubyConversionOutput)
+    
     mutating func convert(completion: @escaping (Result<String, RubyConversionError>) -> Void)
     mutating func cancel()
 }
@@ -31,10 +36,12 @@ protocol RubyConversionRequest {
 enum RubyConversionOutput {
     case hiragana
     case katakana
+    case romaji
 }
 
 enum RubyConversionProvider {
     case goo
+    case yahoo
 }
 
 class RubyConverter {
@@ -44,10 +51,17 @@ class RubyConverter {
     
     private var throttleTimer: Timer?
     private var request: RubyConversionRequest?
-    private var requestOptions: (String, RubyConversionOutput)?
+    private var requestOptions: (String, RubyConversionOutput, RubyConversionProvider)?
+    
+    static func availableOutputs(provider: RubyConversionProvider) -> [RubyConversionOutput] {
+        switch provider {
+        case .goo: return RubyConversionRequestGoo.availableOutputs
+        case .yahoo: return RubyConversionRequestYahoo.availableOutputs
+        }
+    }
     
     func convert(_ text: String, to output: RubyConversionOutput, using provider: RubyConversionProvider) {
-        requestOptions = (text, output)
+        requestOptions = (text, output, provider)
         if throttleTimer == nil {
             throttleTimer = .scheduledTimer(withTimeInterval: throttleTimeout, repeats: false, block: { [weak self] _ in
                 self?.throttleTimer = nil
@@ -66,8 +80,16 @@ class RubyConverter {
     
     private func makeRequest() {
         request?.cancel()
-        guard let (text, output) = requestOptions else { return }
-        request = RubyConversionRequestGoo(text: text, output: output)
+        guard let (text, output, provider) = requestOptions else { return }
+        guard RubyConverter.availableOutputs(provider: provider).contains(output) else {
+            self.delegate?.converterDidFail(error: .outputNotAvailable)
+            self.delegate?.converterDidEnd()
+            return
+        }
+        switch provider {
+        case .goo: request = RubyConversionRequestGoo(text: text, output: output)
+        case .yahoo: request = RubyConversionRequestYahoo(text: text, output: output)
+        }
         request?.convert { [weak self] result in
             DispatchQueue.main.async {
                 switch result {

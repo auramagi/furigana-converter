@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		A3A1B3EE22E6BF8900F41650 /* AlertSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A1B3ED22E6BF8900F41650 /* AlertSelector.swift */; };
+		A3A1B3F022E6DC2000F41650 /* RubyConversionRequestYahoo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A1B3EF22E6DC2000F41650 /* RubyConversionRequestYahoo.swift */; };
+		A3A1B3F222E6E20000F41650 /* CustomXMLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A1B3F122E6E20000F41650 /* CustomXMLParser.swift */; };
 		A3DBDEB322E69E0B000033CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DBDEB222E69E0B000033CF /* AppDelegate.swift */; };
 		A3DBDEB522E69E0B000033CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3DBDEB422E69E0B000033CF /* ViewController.swift */; };
 		A3DBDEB822E69E0B000033CF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3DBDEB622E69E0B000033CF /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 
 /* Begin PBXFileReference section */
 		A3A1B3ED22E6BF8900F41650 /* AlertSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSelector.swift; sourceTree = "<group>"; };
+		A3A1B3EF22E6DC2000F41650 /* RubyConversionRequestYahoo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubyConversionRequestYahoo.swift; sourceTree = "<group>"; };
+		A3A1B3F122E6E20000F41650 /* CustomXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomXMLParser.swift; sourceTree = "<group>"; };
 		A3DBDEAF22E69E0B000033CF /* furigana-converter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "furigana-converter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3DBDEB222E69E0B000033CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A3DBDEB422E69E0B000033CF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +70,8 @@
 				A3A1B3ED22E6BF8900F41650 /* AlertSelector.swift */,
 				A3DBDEC422E6A32E000033CF /* RubyConverter.swift */,
 				A3DBDEC622E6A370000033CF /* RubyConversionRequestGoo.swift */,
+				A3A1B3EF22E6DC2000F41650 /* RubyConversionRequestYahoo.swift */,
+				A3A1B3F122E6E20000F41650 /* CustomXMLParser.swift */,
 				A3DBDEC822E6A3BA000033CF /* secrets.xcconfig */,
 				A3DBDEB622E69E0B000033CF /* Main.storyboard */,
 				A3DBDEB922E69E0D000033CF /* Assets.xcassets */,
@@ -146,10 +152,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3A1B3F222E6E20000F41650 /* CustomXMLParser.swift in Sources */,
 				A3A1B3EE22E6BF8900F41650 /* AlertSelector.swift in Sources */,
 				A3DBDEB522E69E0B000033CF /* ViewController.swift in Sources */,
 				A3DBDEC522E6A32E000033CF /* RubyConverter.swift in Sources */,
 				A3DBDEC722E6A370000033CF /* RubyConversionRequestGoo.swift in Sources */,
+				A3A1B3F022E6DC2000F41650 /* RubyConversionRequestYahoo.swift in Sources */,
 				A3DBDEB322E69E0B000033CF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
