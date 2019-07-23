@@ -77,6 +77,15 @@ extension ViewController: RubyConverterDelegate {
         rubyOutput.text = ruby
     }
     
+    func converterDidFail(error: RubyConversionError?) {
+        let errorText: String
+        switch error {
+        case .some(.providerNotAvaliable): errorText = "変換オプションの\(conversionProvider.text)が設定されていないため、現在は使えません。"
+        default: errorText = "変換中、エラーが発生しました。"
+        }
+        rubyOutput.text = errorText
+    }
+    
     func converterWillStart() {
         activityIndicator?.isHidden = false
         UIApplication.shared.isNetworkActivityIndicatorVisible = true

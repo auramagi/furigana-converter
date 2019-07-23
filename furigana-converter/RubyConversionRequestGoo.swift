@@ -19,11 +19,18 @@ struct RubyConversionRequestGoo: RubyConversionRequest {
         self.output = output
     }
     
-    mutating func convert(completion: @escaping (String?) -> Void) {
-        let requestContent = Request(app_id: RubyConversionRequestGoo.appID,
+    mutating func convert(completion: @escaping (Result<String, RubyConversionError>) -> Void) {
+        guard let appID = RubyConversionRequestGoo.appID, !appID.isEmpty else {
+            completion(.failure(.providerNotAvaliable))
+            return
+        }
+        let requestContent = Request(app_id: appID,
                               sentence: text,
                               output_type: .fromOutput(output))
-        let json = try! JSONEncoder().encode(requestContent)
+        guard let json = try? JSONEncoder().encode(requestContent) else {
+            completion(.failure(.providerError))
+            return
+        }
         var request =  URLRequest(url: RubyConversionRequestGoo.endpoint)
         request.httpMethod = "POST"
         request.httpBody = json
@@ -33,8 +40,11 @@ struct RubyConversionRequestGoo: RubyConversionRequest {
             guard
                 let data = data,
                 let jsonResponse = try? JSONDecoder().decode(Response.self, from: data)
-                else { return }
-            completion(jsonResponse.converted)
+                else {
+                completion(.failure(.providerError))
+                return
+            }
+            completion(.success(jsonResponse.converted))
         }
         
         task?.resume()
@@ -46,8 +56,8 @@ struct RubyConversionRequestGoo: RubyConversionRequest {
     }
     
     private static let endpoint = URL(string: "https://labs.goo.ne.jp/api/hiragana")!
-    private static var appID: String {
-        return Bundle.main.object(forInfoDictionaryKey: "GOO_APP_ID") as! String
+    private static var appID: String? {
+        return Bundle.main.object(forInfoDictionaryKey: "GOO_APP_ID") as? String
     }
 }
 
