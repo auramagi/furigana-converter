@@ -9,12 +9,24 @@
 import Foundation
 
 protocol RubyConverterDelegate: class {
-    func converterDidConvertText(_ originalText: String, ruby: String)
+    func converterWillStart()
+    func converterDidConvertText(_ originalText: String, ruby: String, output: RubyConversionOutput)
+    func converterDidEnd()
 }
 
 protocol RubyConversionRequest {
-    init(text: String, completion: @escaping (String?) -> Void)
-    func cancel()
+    init(text: String, output: RubyConversionOutput)
+    mutating func convert(completion: @escaping (String?) -> Void)
+    mutating func cancel()
+}
+
+enum RubyConversionOutput {
+    case hiragana
+    case katakana
+}
+
+enum RubyConversionProvider {
+    case goo
 }
 
 class RubyConverter {
@@ -24,16 +36,17 @@ class RubyConverter {
     
     private var throttleTimer: Timer?
     private var request: RubyConversionRequest?
-    private var requestText: String?
+    private var requestOptions: (String, RubyConversionOutput)?
     
-    func convert(_ text: String) {
-        requestText = text
+    func convert(_ text: String, to output: RubyConversionOutput, using provider: RubyConversionProvider) {
+        requestOptions = (text, output)
         if throttleTimer == nil {
             throttleTimer = .scheduledTimer(withTimeInterval: throttleTimeout, repeats: false, block: { [weak self] _ in
                 self?.throttleTimer = nil
                 self?.makeRequest()
             })
         }
+        delegate?.converterWillStart()
     }
     
     func cancel() {
@@ -45,12 +58,14 @@ class RubyConverter {
     
     private func makeRequest() {
         request?.cancel()
-        guard let text = requestText else { return }
-        request = RubyConversionRequestGoo(text: text, completion: { [weak self] ruby in
+        guard let (text, output) = requestOptions else { return }
+        request = RubyConversionRequestGoo(text: text, output: output)
+        request?.convert { [weak self] ruby in
             guard let ruby = ruby else { return }
             DispatchQueue.main.async {
-                self?.delegate?.converterDidConvertText(text, ruby: ruby)
+                self?.delegate?.converterDidConvertText(text, ruby: ruby, output: output)
+                self?.delegate?.converterDidEnd()
             }
-        })
+        }
     }
 }

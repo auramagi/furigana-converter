@@ -8,13 +8,21 @@
 
 import Foundation
 
-class RubyConversionRequestGoo: RubyConversionRequest {
+struct RubyConversionRequestGoo: RubyConversionRequest {
+    let text: String
+    let output: RubyConversionOutput
+    
     var task: URLSessionDataTask?
     
-    required init(text: String, completion: @escaping (String?) -> Void) {
+    init(text: String, output: RubyConversionOutput) {
+        self.text = text
+        self.output = output
+    }
+    
+    mutating func convert(completion: @escaping (String?) -> Void) {
         let requestContent = Request(app_id: RubyConversionRequestGoo.appID,
                               sentence: text,
-                              output_type: .hiragana)
+                              output_type: .fromOutput(output))
         let json = try! JSONEncoder().encode(requestContent)
         var request =  URLRequest(url: RubyConversionRequestGoo.endpoint)
         request.httpMethod = "POST"
@@ -32,7 +40,7 @@ class RubyConversionRequestGoo: RubyConversionRequest {
         task?.resume()
     }
     
-    func cancel() {
+    mutating func cancel() {
         task?.cancel()
         task = nil
     }
@@ -47,6 +55,13 @@ extension RubyConversionRequestGoo {
     private enum OutputType: String, Codable {
         case hiragana = "hiragana"
         case katakana = "katakana"
+        
+        static func fromOutput(_ output: RubyConversionOutput) -> OutputType {
+            switch output {
+            case .hiragana: return .hiragana
+            case .katakana: return .katakana
+            }
+        }
     }
     
     private struct Request: Encodable {
