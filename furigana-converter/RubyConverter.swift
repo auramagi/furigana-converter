@@ -78,6 +78,7 @@ class RubyConverter {
         throttleTimer = nil
         request?.cancel()
         request = nil
+        delegate?.converterDidEnd()
     }
     
     private func makeRequest() {
