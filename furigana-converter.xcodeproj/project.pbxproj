@@ -21,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A312ED2322EDF7D9004BFD28 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A3A1B3ED22E6BF8900F41650 /* AlertSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSelector.swift; sourceTree = "<group>"; };
 		A3A1B3EF22E6DC2000F41650 /* RubyConversionRequestYahoo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubyConversionRequestYahoo.swift; sourceTree = "<group>"; };
 		A3A1B3F122E6E20000F41650 /* CustomXMLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomXMLParser.swift; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		A3DBDEA622E69E0B000033CF = {
 			isa = PBXGroup;
 			children = (
+				A312ED2322EDF7D9004BFD28 /* README.md */,
 				A3DBDEB122E69E0B000033CF /* furigana-converter */,
 				A3DBDEB022E69E0B000033CF /* Products */,
 			);
