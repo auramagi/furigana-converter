@@ -29,7 +29,6 @@ class XMLObjectParser: NSObject, XMLParserDelegate {
     let document = XMLObject(tagName: "document")
     
     private var contextItems: [XMLObject] = []
-    private var parent: XMLObject { return contextItems.count > 1 ? contextItems[-2] : document }
     private var currentItem: XMLObject { return contextItems.last ?? document }
     
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
