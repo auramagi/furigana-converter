@@ -89,11 +89,11 @@ extension ViewController: UITextFieldDelegate {
 }
 
 extension ViewController: RubyConverterDelegate {
-    func converterDidConvertText(_ originalText: String, ruby: String, output: RubyConversionOutput) {
+    func converterDidConvertText(_ converter: RubyConverter, originalText: String, ruby: String, output: RubyConversionOutput) {
         rubyOutput.text = ruby
     }
     
-    func converterDidFail(error: RubyConversionError?) {
+    func converterDidFail(_ converter: RubyConverter, error: RubyConversionError?) {
         let errorText: String
         switch error {
         case .some(.providerNotAvaliable): errorText = "変換オプションの\(conversionProvider.text)が設定されていないため、現在は使えません。"
@@ -103,12 +103,12 @@ extension ViewController: RubyConverterDelegate {
         rubyOutput.text = errorText
     }
     
-    func converterWillStart() {
+    func converterWillStart(_ converter: RubyConverter) {
         activityIndicator?.isHidden = false
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
-    func converterDidEnd() {
+    func converterDidEnd(_ converter: RubyConverter) {
         activityIndicator?.isHidden = true
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }

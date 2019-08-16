@@ -9,10 +9,10 @@
 import Foundation
 
 protocol RubyConverterDelegate: class {
-    func converterWillStart()
-    func converterDidConvertText(_ originalText: String, ruby: String, output: RubyConversionOutput)
-    func converterDidFail(error: RubyConversionError?)
-    func converterDidEnd()
+    func converterWillStart(_ converter: RubyConverter)
+    func converterDidConvertText(_ converter: RubyConverter, originalText: String, ruby: String, output: RubyConversionOutput)
+    func converterDidFail(_ converter: RubyConverter, error: RubyConversionError?)
+    func converterDidEnd(_ converter: RubyConverter)
 }
 
 enum RubyConversionError: Error {
@@ -52,7 +52,6 @@ class RubyConverter {
     
     private var throttleTimer: Timer?
     private var request: RubyConversionRequest?
-    private var requestOptions: (String, RubyConversionOutput, RubyConversionProvider)?
     
     static func availableOutputs(provider: RubyConversionProvider) -> [RubyConversionOutput] {
         switch provider {
@@ -63,14 +62,13 @@ class RubyConverter {
     }
     
     func convert(_ text: String, to output: RubyConversionOutput, using provider: RubyConversionProvider) {
-        requestOptions = (text, output, provider)
         if throttleTimer == nil {
             throttleTimer = .scheduledTimer(withTimeInterval: throttleTimeout, repeats: false, block: { [weak self] _ in
                 self?.throttleTimer = nil
-                self?.makeRequest()
+                self?.makeRequest(text, to: output, using: provider)
             })
         }
-        delegate?.converterWillStart()
+        delegate?.converterWillStart(self)
     }
     
     func cancel() {
@@ -78,15 +76,14 @@ class RubyConverter {
         throttleTimer = nil
         request?.cancel()
         request = nil
-        delegate?.converterDidEnd()
+        delegate?.converterDidEnd(self)
     }
     
-    private func makeRequest() {
+    private func makeRequest(_ text: String, to output: RubyConversionOutput, using provider: RubyConversionProvider) {
         request?.cancel()
-        guard let (text, output, provider) = requestOptions else { return }
         guard RubyConverter.availableOutputs(provider: provider).contains(output) else {
-            self.delegate?.converterDidFail(error: .outputNotAvailable)
-            self.delegate?.converterDidEnd()
+            self.delegate?.converterDidFail(self, error: .outputNotAvailable)
+            self.delegate?.converterDidEnd(self)
             return
         }
         switch provider {
@@ -96,14 +93,19 @@ class RubyConverter {
         }
         request?.convert { [weak self] result in
             DispatchQueue.main.async {
+                guard let self = self else { return }
                 switch result {
                 case .failure(let error):
-                    self?.delegate?.converterDidFail(error: error)
+                    self.delegate?.converterDidFail(self, error: error)
                 case .success(let ruby):
-                    self?.delegate?.converterDidConvertText(text, ruby: ruby, output: output)
+                    self.delegate?.converterDidConvertText(self, originalText: text, ruby: ruby, output: output)
                 }
-                self?.delegate?.converterDidEnd()
+                self.delegate?.converterDidEnd(self)
             }
         }
+    }
+    
+    deinit {
+        delegate?.converterDidEnd(self)
     }
 }

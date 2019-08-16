@@ -15,7 +15,7 @@ There are 3 options for converting text.
 
 A JSON API to convert Japanese text with kanji to either hiragana or katakana.
 
-#### 2. [Yahoo! Japan Furigana API](https://developer.yahoo.co.jp/webapi/jlp/)
+#### 2. [Yahoo! Japan Furigana API](https://developer.yahoo.co.jp/webapi/jlp/furigana/v1/furigana.html)
 
 An XML API to put ruby (furigana) over Japanese text with kanji. 
 In this app it is used to convert text to either hiragana or Latin alphabet.
@@ -36,3 +36,19 @@ Don't use quotation marks, e.g.:
 GOO_APP_ID = 12345abcd
 YAHOO_APP_ID = 12345abcd
 ```
+
+## Next steps
+
+This sample app can be improved in several ways.
+
+1. Implement tests.
+
+2. Introduce 3rd party frameworks to reduce complexity.
+
+Stuff like `Moya` or/and `Alamofire` for network abstraction, `RxSwift` for better state handling.
+
+3. Add new functionality.
+
+- Copying the result to clipboard.
+- Take full advantage of Yahoo API and surface different options to user, or show results as actual furigana.
+- Put UI into table view and implement showing and managing history of requests.
