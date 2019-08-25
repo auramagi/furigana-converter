@@ -62,13 +62,13 @@ class RubyConverter {
     }
     
     func convert(_ text: String, to output: RubyConversionOutput, using provider: RubyConversionProvider) {
-        if throttleTimer == nil {
-            throttleTimer = .scheduledTimer(withTimeInterval: throttleTimeout, repeats: false, block: { [weak self] _ in
-                self?.throttleTimer = nil
-                self?.makeRequest(text, to: output, using: provider)
-            })
-        }
+        let timeout = throttleTimer?.fireDate.timeIntervalSinceNow ?? throttleTimeout
+        throttleTimer?.invalidate()
         delegate?.converterWillStart(self)
+        throttleTimer = .scheduledTimer(withTimeInterval: timeout, repeats: false, block: { [weak self] _ in
+            self?.throttleTimer = nil
+            self?.makeRequest(text, to: output, using: provider)
+        })
     }
     
     func cancel() {
